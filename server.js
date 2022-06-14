@@ -90,3 +90,64 @@ app.use(express.static('public')) // serve files from public statically
 //////////////////////////////////////////////
 const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
+
+
+app.get('/seed',(req, res) => {
+
+})
+
+//root route
+app.get('/', (req, res) => {
+    res.render('root')
+})
+
+// AVATARS index route
+app.get('/avatars', (req, res) => {
+    res.render('./avatars/index', {
+
+    })
+})
+
+// ELEMENTS index route
+app.get('/elements', (req, res) => {
+    res.render('./elements/index', {
+
+    })
+})
+
+// new route
+app.get('/signup', (req, res) => {
+    res.render('new.liquid')
+})
+
+
+// AVATARS show route
+app.get('/avatars/:id', (req,res) => {
+    res.render('./avatars/show', {
+        
+    }) 
+})
+
+// ELEMENTS show route
+app.get('/elements/:id', (req,res) => {
+    res.render('./elements/show', {
+        
+    }) 
+})
+
+// create route
+app.post('/avatars', (req, res) => {
+
+
+})
+
+
+//update route
+app.put('/signup/:id', (req, res) => {
+
+})
+
+//destroy route
+app.delete('/signup/:id', (req, res) => {
+
+})
