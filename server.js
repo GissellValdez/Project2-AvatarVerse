@@ -100,7 +100,7 @@ app.get('/', (req, res) => {
 app.get('/seed', (req, res) => {
 	// array of last 10 avatars
 	const lastTenAvatars = [
-		{ name: 'Korra', tribe: 'Southern Water Tribe', animalCompanion: 'Polarbear'},
+		{ name: 'Korra', tribe: 'Northern Water Tribe', animalCompanion: 'Polarbear'},
 		{ name: 'Aang', tribe: 'Souther Air Temple', animalCompanion:'Appa' },
 		{ name: 'Roku', tribe 'Fire Nation', animalCompanion: Dragon },
 		{ name: 'Kyoshi', tribe 'Earth Kingdom', animalCompanion: Unknown },
@@ -111,12 +111,34 @@ app.get('/seed', (req, res) => {
         { name: 'Gun', tribe: 'unknown', animalCompanion: 'unknown'},
         { name: 'Wan', tribe: 'Fire Nation', animalCompanion: 'Lion Turtle'},
 	]
+    const allFiveElements = [
+        {name: 'Fire', tribe: 'Fire Nation', martialArt: 'ShaoLin/ Kung-Fu', strongestMove: 'String', notableAvatar: Roku, image: String,},
+
+        {name: 'Air', tribe: 'Southern & Western Air Temple (aang cycle/era', martialArt: String, strongestMove: String, notableAvatar: String, image: String,},
+
+        {name: 'Water', tribe:'Northen & Southern Water Tribe', martialArt:'Tai-chi', strongestMove: String, notableAvatar:'Korra', image: String,},
+
+        {name: 'Earth', tribe: 'Earth Kingdom', martialArt: String, strongestMove: String, notableAvatar: String, image: String,},
+
+        {name: 'Metal', tribe: 'Tophs Metal Bending Academy', martialArt: String, strongestMove: String, notableAvatar: 'Aang, Korra (Not sure)', image: String,}
+
+    ]
+
 
 	// Delete all avatars
 	Avatar.deleteMany({}).then((data) => {
 		// Seed Last Ten Avatars
 		Avatar.create(lastTenAvatars).then((data) => {
 			// send created avatars as response to confirm creation
+			res.json(data)
+		})
+	})
+
+    	// Delete all elements
+	Element.deleteMany({}).then((data) => {
+		// Seed All five Elements
+		Avatar.create(allFiveElements).then((data) => {
+			// send created elements as response to confirm creation
 			res.json(data)
 		})
 	})
