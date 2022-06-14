@@ -28,3 +28,43 @@ mongoose.connection
   .on("close", () => console.log("Disconnected from Mongoose"))
   .on("error", (error) => console.log(error));
   */
+
+  ////////////////////////////////////////////////
+// Our Models
+////////////////////////////////////////////////
+
+// const Schema = mongoose.Schema
+// const model = mongoose.model
+// is equal to :
+
+// This short hand is called destructuring and it's creating two variables to pull schema and model from mongoose at the same time.
+const { Schema, model } = mongoose
+
+// make Avatars Schema
+const avatarsSchema = new Schema({
+   name: String,
+   tribe: String,
+   animalCompanion: String,
+   avatarStateAge: Number,
+   rival: String,
+   signatureMove: String,
+   accomplishments: String, // should have an option of 3 different accomplishments - use an array.
+   goToElement: String,
+   ageOfDeath: Number,
+})
+ 
+// make model
+const avatar = model("avatar", avatarsSchema)
+ 
+// make elements schema
+const elementsSchema = new Schema({
+   name: String,
+   tribe: String,
+   martialArt: String,
+   strongestMove: String,
+   notableAvatar: String,
+   image: String,
+})
+ 
+// make element model
+const Element = model("Element", elementsSchema)
