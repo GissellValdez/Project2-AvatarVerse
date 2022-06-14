@@ -22,12 +22,12 @@ const CONFIG = {
 // Establish Connection
 mongoose.connect(DATABASE_URL, CONFIG)
 
-/* Events for when connection opens/disconnects/errors
+// Events for when connection opens/disconnects/errors
 mongoose.connection
   .on("open", () => console.log("Connected to Mongoose"))
   .on("close", () => console.log("Disconnected from Mongoose"))
   .on("error", (error) => console.log(error));
-  */
+  
 
   ////////////////////////////////////////////////
 // Our Models
@@ -85,20 +85,41 @@ app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodi
 app.use(express.static('public')) // serve files from public statically
 
 
-//////////////////////////////////////////////
-// Server Listener
-//////////////////////////////////////////////
-const PORT = process.env.PORT
-app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
+////////////////////////////////////////////
+// Routes
+////////////////////////////////////////////
 
 
-app.get('/seed',(req, res) => {
+/// Root Route ///
 
+app.get('/', (req, res) => {
+    res.render('root.liquid')
 })
 
-//root route
-app.get('/', (req, res) => {
-    res.render('root')
+/// Seed Route ///
+app.get('/seed', (req, res) => {
+	// array of last 10 avatars
+	const lastTenAvatars = [
+		{ name: 'Korra', tribe: 'Southern Water Tribe', animalCompanion: 'Polarbear'},
+		{ name: 'Aang', tribe: 'Souther Air Temple', animalCompanion:'Appa' },
+		{ name: 'Roku', tribe 'Fire Nation', animalCompanion: Dragon },
+		{ name: 'Kyoshi', tribe 'Earth Kingdom', animalCompanion: Unknown },
+		{ name: 'Kuruk', tribe 'Northen Water Tribe', animalCompanion: unknown },
+        { name: 'Yangchen', tribe: 'Western Air Temple', animalCompanion: 'unknown'},
+        { name: 'Szeto', tribe: 'Fire Nation', animalCompanion: 'unknown'},
+        { name: 'Salai', tribe: 'unknown', animalCompanion: 'unknown'},
+        { name: 'Gun', tribe: 'unknown', animalCompanion: 'unknown'},
+        { name: 'Wan', tribe: 'Fire Nation', animalCompanion: 'Lion Turtle'},
+	]
+
+	// Delete all avatars
+	Avatar.deleteMany({}).then((data) => {
+		// Seed Last Ten Avatars
+		Avatar.create(lastTenAvatars).then((data) => {
+			// send created avatars as response to confirm creation
+			res.json(data)
+		})
+	})
 })
 
 // AVATARS index route
@@ -151,3 +172,9 @@ app.put('/signup/:id', (req, res) => {
 app.delete('/signup/:id', (req, res) => {
 
 })
+
+//////////////////////////////////////////////
+// Server Listener
+//////////////////////////////////////////////
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
