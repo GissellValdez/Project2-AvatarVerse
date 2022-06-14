@@ -61,7 +61,7 @@ const elementsSchema = new Schema({
    name: String,
    tribe: String,
    martialArt: String,
-   strongestMove: String,
+   subElement: String,
    notableAvatar: String,
    image: String,
 })
@@ -100,27 +100,27 @@ app.get('/', (req, res) => {
 app.get('/seed', (req, res) => {
 	// array of last 10 avatars
 	const lastTenAvatars = [
-		{ name: 'Korra', tribe: 'Northern Water Tribe', animalCompanion: 'Polarbear'},
-		{ name: 'Aang', tribe: 'Souther Air Temple', animalCompanion:'Appa' },
-		{ name: 'Roku', tribe 'Fire Nation', animalCompanion: Dragon },
-		{ name: 'Kyoshi', tribe 'Earth Kingdom', animalCompanion: Unknown },
-		{ name: 'Kuruk', tribe 'Northen Water Tribe', animalCompanion: unknown },
+		{ name: 'Korra', tribe: 'Northern Water Tribe', animalCompanion:'Polarbear Dog - Naga'},
+		{ name: 'Aang', tribe: 'Souther Air Temple', animalCompanion:'Flying Bison - Appa' },
+		{ name: 'Roku', tribe 'Fire Nation', animalCompanion: 'Dragon-Fang' },
+		{ name: 'Kyoshi', tribe 'Earth Kingdom', animalCompanion: 'Unknown' },
+		{ name: 'Kuruk', tribe 'Northen Water Tribe', animalCompanion: 'unknown' },
         { name: 'Yangchen', tribe: 'Western Air Temple', animalCompanion: 'unknown'},
         { name: 'Szeto', tribe: 'Fire Nation', animalCompanion: 'unknown'},
         { name: 'Salai', tribe: 'unknown', animalCompanion: 'unknown'},
         { name: 'Gun', tribe: 'unknown', animalCompanion: 'unknown'},
         { name: 'Wan', tribe: 'Fire Nation', animalCompanion: 'Lion Turtle'},
 	]
-    const allFiveElements = [
-        {name: 'Fire', tribe: 'Fire Nation', martialArt: 'ShaoLin/ Kung-Fu', strongestMove: 'String', notableAvatar: Roku, image: String,},
+    const allFourElements = [
+        {name: 'Fire', tribe: 'Fire Nation', martialArt: 'Northern Shaolin Kung-Fu', subElement: 'lightening Bending', notableAvatar: 'Roku', image: 'link'},
 
-        {name: 'Air', tribe: 'Southern & Western Air Temple (aang cycle/era', martialArt: String, strongestMove: String, notableAvatar: String, image: String,},
+        {name: 'Air', tribe: 'Southern & Western Air Temple (Aang cycle/era', martialArt:'Bagua', subElement: 'n/a NM: Aang - Energy Bending', notableAvatar: 'Yang Cheng', image: 'link'},
 
-        {name: 'Water', tribe:'Northen & Southern Water Tribe', martialArt:'Tai-chi', strongestMove: String, notableAvatar:'Korra', image: String,},
+        {name: 'Water', tribe:'Northen & Southern Water Tribe', martialArt:'Tai-chi', subElement: 'Blood Bending', notableAvatar:'Korra', image: 'link'},
 
-        {name: 'Earth', tribe: 'Earth Kingdom', martialArt: String, strongestMove: String, notableAvatar: String, image: String,},
+        {name: 'Earth', tribe: 'Earth Kingdom', martialArt:'Hung/Chow Gar & Southern Praying Mantis', subElement: 'Metal Bending', notableAvatar: 'Toph', image: "link"},
 
-        {name: 'Metal', tribe: 'Tophs Metal Bending Academy', martialArt: String, strongestMove: String, notableAvatar: 'Aang, Korra (Not sure)', image: String,}
+
 
     ]
 
@@ -136,7 +136,7 @@ app.get('/seed', (req, res) => {
 
     	// Delete all elements
 	Element.deleteMany({}).then((data) => {
-		// Seed All five Elements
+		// Seed All Four Elements
 		Avatar.create(allFiveElements).then((data) => {
 			// send created elements as response to confirm creation
 			res.json(data)
