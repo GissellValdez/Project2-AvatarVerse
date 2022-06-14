@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvatarVerse: {{element.name}}</title>
+
+    <style type="text/css">
+        body {
+            background-color: red;
+            color: rgb(215, 247, 236);
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .canvas {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            justify-items: center;
+        }
+
+        .dataDiv {
+            background-color: grey;
+            text-align: center;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <h1>{{element.name}}</h1>
+        <a href="/elements">Back to Elements</a>
+    </div>
+    <br>
+    <br>
+    <div class="canvas">
+        <div id="nameAndBasicInfo" class="dataDiv">
+            <br>
+            <br>
+            <img src="{{element.img}}" width="75" height="100">
+        </div>
+
+        <div id="statsInfo" class="dataDiv">
+            <h2>Element information:</h2>
+            <ul>
+                <li>Tribe: {{element.tribe}}</li>
+                <li>Martial Art: {{element.martialArt}}</li>
+                <li>Strongest Move: {{element.strongestMove}}</li>
+                <li>Notable Avatar: {{element.notableAvatar}}</li>
+                <li>Signature Move: {{element.signatureMove}}</li>
+                <li>Notable Avatar: {{element.notableAvatar}}</li>
+                <ul>
+        </div>
+    </div>
+</body>
+
+</html>

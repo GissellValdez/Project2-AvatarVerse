@@ -1,0 +1,48 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvatarVerse</title>
+
+    <style type="text/css">
+        body {
+            background-color: red;
+            color: rgb(215, 247, 236);
+            text-align: left;
+            font-size: 18;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            justify-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bannerDiv">
+        <h1>Avatars</h1>
+        <a href="/">Back to main page</a><br>
+    </div>
+
+    <br>
+    <br>
+    <div class="container">
+        {%for avatar in avatars%}
+        <div class="avatarImg">
+            <h3>{{avatar.name}}</h3>
+            <a href="/avatars/{{forloop.index0}}">
+                <img src="{{avatar.img}}" width="75" height="100">
+            </a>
+            <br>
+            <br>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+
+</html>
