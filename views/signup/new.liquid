@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Avatar</title>
+
+    <style type="text/css">
+        body {
+            background-color: red;
+            color: rgb(215, 247, 236);
+            text-align: left;
+            font-size: 18;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(9, auto);
+            justify-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add a new Avatar</h1>
+    <div class="container">
+        <form action="/avatars" method="POST">
+            Name: <input type="text" name="name" placeholder="Enter name for your avatar" /><br>
+            Img: <input type="text" name="img" placeholder="Enter Img Link" /><br>
+            Tribe: <input type="text" name="tribe" placeholder="Enter your avatar's tribe" /><br>
+            Animal Companion: <input type="text" name="animalCompanion" placeholder="Enter animal companion" /><br>
+            Avatar State Age: <input type="number" name="avatarStateAge"
+                placeholder="Enter age when first entered avatar state" /><br>
+            Rival: <input type="text" name="rival" placeholder="Enter rival's name" /><br>
+            Signature Move: <input type="text" name="signatureMove" placeholder="Enter signature move" /><br>
+            Accomplishments: <input type="text" name="accomplishments"
+                placeholder="Enter accomplishments (comma seperated)" /><br>
+            Go To Element: <input type="text" name="goToElement" placeholder="Enter go to element" /><br>
+            Age Of Death: <input type="number" name="ageOfDeath" placeholder="Enter the age of death" /><br>
+            <input type="submit" value="Create new Avatar" />
+        </form>
+    </div>
+</body>
+
+</html>

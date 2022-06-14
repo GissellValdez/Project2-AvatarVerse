@@ -54,7 +54,7 @@ const avatarsSchema = new Schema({
 })
  
 // make model
-const avatar = model("avatar", avatarsSchema)
+const Avatar = model("avatar", avatarsSchema)
  
 // make elements schema
 const elementsSchema = new Schema({
@@ -96,103 +96,236 @@ app.get('/', (req, res) => {
     res.render('root.liquid')
 })
 
-/// Seed Route ///
-app.get('/seed', (req, res) => {
+/// Avatars Seed Route ///
+app.get('/avatars/seed', (req, res) => {
 	// array of last 10 avatars
 	const lastTenAvatars = [
-		{ name: 'Korra', tribe: 'Northern Water Tribe', animalCompanion:'Polarbear Dog - Naga'},
-		{ name: 'Aang', tribe: 'Souther Air Temple', animalCompanion:'Flying Bison - Appa' },
-		{ name: 'Roku', tribe 'Fire Nation', animalCompanion: 'Dragon-Fang' },
-		{ name: 'Kyoshi', tribe 'Earth Kingdom', animalCompanion: 'Unknown' },
-		{ name: 'Kuruk', tribe 'Northen Water Tribe', animalCompanion: 'unknown' },
-        { name: 'Yangchen', tribe: 'Western Air Temple', animalCompanion: 'unknown'},
-        { name: 'Szeto', tribe: 'Fire Nation', animalCompanion: 'unknown'},
-        { name: 'Salai', tribe: 'unknown', animalCompanion: 'unknown'},
-        { name: 'Gun', tribe: 'unknown', animalCompanion: 'unknown'},
-        { name: 'Wan', tribe: 'Fire Nation', animalCompanion: 'Lion Turtle'},
+		{
+			name: 'Korra',
+			tribe: 'Northern Water Tribe',
+			animalCompanion: 'Polarbear Dog - Naga',
+		},
+		{
+			name: 'Aang',
+			tribe: 'Souther Air Temple',
+			animalCompanion: 'Flying Bison - Appa',
+		},
+		{
+			name: 'Roku',
+			tribe: 'Fire Nation',
+			animalCompanion: 'Dragon-Fang',
+		},
+		{
+			name: 'Kyoshi',
+			tribe: 'Earth Kingdom',
+			animalCompanion: 'Unknown',
+		},
+		{
+			name: 'Kuruk',
+			tribe: 'Northern Water Tribe',
+			animalCompanion: 'unknown',
+		},
+		{
+			name: 'Yangchen',
+			tribe: 'Western Air Temple',
+			animalCompanion: 'unknown',
+		},
+		{
+			name: 'Szeto',
+			tribe: 'Fire Nation',
+			animalCompanion: 'unknown',
+		},
+		{
+			name: 'Salai',
+			tribe: 'unknown',
+			animalCompanion: 'unknown',
+		},
+		{
+			name: 'Gun',
+			tribe: 'unknown',
+			animalCompanion: 'unknown',
+		},
+		{
+			name: 'Wan',
+			tribe: 'Fire Nation',
+			animalCompanion: 'Lion Turtle',
+		},
 	]
-    const allFourElements = [
-        {name: 'Fire', tribe: 'Fire Nation', martialArt: 'Northern Shaolin Kung-Fu', subElement: 'lightening Bending', notableAvatar: 'Roku', image: 'link'},
 
-        {name: 'Air', tribe: 'Southern & Western Air Temple (Aang cycle/era', martialArt:'Bagua', subElement: 'n/a NM: Aang - Energy Bending', notableAvatar: 'Yang Cheng', image: 'link'},
-
-        {name: 'Water', tribe:'Northen & Southern Water Tribe', martialArt:'Tai-chi', subElement: 'Blood Bending', notableAvatar:'Korra', image: 'link'},
-
-        {name: 'Earth', tribe: 'Earth Kingdom', martialArt:'Hung/Chow Gar & Southern Praying Mantis', subElement: 'Metal Bending', notableAvatar: 'Toph', image: "link"},
-
-
-
-    ]
-
-
-	// Delete all avatars
+	// Delete all elements
 	Avatar.deleteMany({}).then((data) => {
-		// Seed Last Ten Avatars
-		Avatar.create(lastTenAvatars).then((data) => {
-			// send created avatars as response to confirm creation
-			res.json(data)
-		})
-	})
-
-    	// Delete all elements
-	Element.deleteMany({}).then((data) => {
 		// Seed All Four Elements
-		Avatar.create(allFiveElements).then((data) => {
+		Avatar.create(lastTenAvatars).then((data) => {
 			// send created elements as response to confirm creation
 			res.json(data)
 		})
 	})
 })
 
-// AVATARS index route
-app.get('/avatars', (req, res) => {
-    res.render('./avatars/index', {
 
-    })
+/// Elements Seed Route ///
+app.get('/elements/seed', (req, res) => {
+
+    	const allFourElements = [
+		{
+			name: 'Fire',
+			tribe: 'Fire Nation',
+			martialArt: 'Northern Shaolin Kung-Fu',
+			subElement: 'lightening Bending',
+			notableAvatar: 'Roku',
+			image: 'link',
+		},
+
+		{
+			name: 'Air',
+			tribe: 'Southern & Western Air Temple (Aang cycle/era',
+			martialArt: 'Bagua',
+			subElement: 'n/a NM: Aang - Energy Bending',
+			notableAvatar: 'Yang Cheng',
+			image: 'link',
+		},
+
+		{
+			name: 'Water',
+			tribe: 'Northen & Southern Water Tribe',
+			martialArt: 'Tai-chi',
+			subElement: 'Blood Bending',
+			notableAvatar: 'Korra',
+			image: 'link',
+		},
+
+		{
+			name: 'Earth',
+			tribe: 'Earth Kingdom',
+			martialArt: 'Hung/Chow Gar & Southern Praying Mantis',
+			subElement: 'Metal Bending',
+			notableAvatar: 'Toph',
+			image: 'link',
+		},
+	]
+
+	// Delete all elements
+	Element.deleteMany({}).then((data) => {
+		// Seed All Four Elements
+		Element.create(allFourElements).then((data) => {
+			// send created elements as response to confirm creation
+			res.json(data)
+		})
+	}) 
 })
 
-// ELEMENTS index route
-app.get('/elements', (req, res) => {
-    res.render('./elements/index', {
+/// AVATARS Index route ///
+ app.get('/avatars', async (req, res) => {
+		const avatars = await Avatar.find({})
+		// find all the avatars
+		res.render('avatars/index.liquid', { avatars })
+ })
 
-    })
-})
+
+/// ELEMENTS Index Route ///
+app.get("/elements", async (req, res) => {
+	const elements = await Element.find({})
+	res.render('elements/index.liquid', { elements })
+});
+
 
 // new route
 app.get('/signup', (req, res) => {
-    res.render('new.liquid')
-})
-
-
-// AVATARS show route
-app.get('/avatars/:id', (req,res) => {
-    res.render('./avatars/show', {
-        
-    }) 
-})
-
-// ELEMENTS show route
-app.get('/elements/:id', (req,res) => {
-    res.render('./elements/show', {
-        
-    }) 
+	// create the new avatar
+	Avatar.create(req.body)
+		.then((avatar) => {
+			// redirect user to index page if successfully created item
+			res.redirect('/avatars')
+		})
+		// send error as json
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
 })
 
 // create route
 app.post('/avatars', (req, res) => {
-
-
+	// create the new avatar
+	Avatar.create(req.body)
+		.then((avatar) => {
+			// redirect user to index page if successfully created item
+			res.redirect('/avatars')
+		})
+		// send error as json
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
 })
 
+// AVATARS show route
+app.get('/avatars/:id', (req,res) => {
+	// get the id from params
+	const id = req.params.id
+
+	// find the particular element from the database
+	Avatar.findById(id)
+		.then((avatar) => {
+			// render the template with the data from the database
+			res.render('./avatars/show.liquid', { avatar })
+		})
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
+})
+
+// ELEMENTS show route
+app.get('/elements/:id', (req,res) => {
+	// get the id from params
+	const id = req.params.id
+
+	// find the particular element from the database
+	Element.findById(id)
+		.then((element) => {
+			// render the template with the data from the database
+			res.render('./elements/show.liquid', { element })
+		})
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
+})
 
 //update route
 app.put('/signup/:id', (req, res) => {
+	// get the id from params
+	const id = req.params.id
 
+	// update the avatar
+	Avatar.findByIdAndUpdate(id, req.body, { new: true })
+		.then((avatar) => {
+			// redirect to main page after updating
+			res.redirect('/avatars')
+		})
+		// send error as json
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
 })
 
 //destroy route
 app.delete('/signup/:id', (req, res) => {
-
+	// get the id from params
+	const id = req.params.id
+	// delete the avatar
+	Avatar.findByIdAndRemove(id)
+		.then((avatars) => {
+			// redirect to main page after deleting
+			res.redirect('/avatars')
+		})
+		// send error as json
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
 })
 
 //////////////////////////////////////////////

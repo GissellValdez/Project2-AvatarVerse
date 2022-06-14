@@ -35,7 +35,7 @@
         {%for avatar in avatars%}
         <div class="avatarImg">
             <h3>{{avatar.name}}</h3>
-            <a href="/avatars/{{forloop.index0}}">
+            <a href="/avatars/{{ avatar._id }}">
                 <img src="{{avatar.img}}" width="75" height="100">
             </a>
             <br>

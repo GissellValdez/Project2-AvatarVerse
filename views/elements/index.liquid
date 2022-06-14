@@ -35,7 +35,7 @@
         {%for element in elements%}
         <div class="elementImg">
             <h3>{{element.name}}</h3>
-            <a href="/elements/{{forloop.index0}}">
+            <a href="/elements/{{ element._id }}">
                 <img src="{{element.img}}" width="75" height="100">
             </a>
             <br>
