@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require('express')
-const Fruit = require('../models/element')
+const Element = require('../models/element')
 
 /////////////////////////////////////////
 // Create Route
@@ -64,14 +64,15 @@ router.get('/seed', (req, res) => {
 })
 
 /// ELEMENTS Index Route ///
-router.get('/elements', async (req, res) => {
+router.get('/', async (req, res) => {
 	const elements = await Element.find({})
-	res.render('elements/index.liquid', { elements })
+	// find all the avatars
+	res.render('../views/elements/index.liquid', { elements })
 })
 
 
 // ELEMENTS show route
-router.get('/elements/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 

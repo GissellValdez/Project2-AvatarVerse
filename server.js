@@ -34,6 +34,9 @@ app.use(express.static('public')) // serve files from public statically
 // Routes
 ////////////////////////////////////////////
 app.use("/avatars",AvatarRouter) // send all "/fruits" routes to the fruit router
+app.use("/elements",ElementRouter) // send all "/fruits" routes to the fruit router
+app.use("/login",UserRouter) // send all "/fruits" routes to the fruit router
+
 
 
 /// Root Route ///

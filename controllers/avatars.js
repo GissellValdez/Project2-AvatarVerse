@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require('express')
-const Fruit = require('../models/avatar')
+const Avatar = require('../models/avatar')
 
 /////////////////////////////////////////
 // Create Route
@@ -20,7 +20,7 @@ const router = express.Router(); // helps connect each of our paths to our route
 router.get('/', async (req, res) => {
 	const avatars = await Avatar.find({})
 	// find all the avatars
-	res.render('avatars/index.liquid', { avatars })
+	res.render('../views/avatars/index.liquid', { avatars })
 })
 
 // CREATE route
