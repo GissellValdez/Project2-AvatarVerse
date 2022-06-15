@@ -30,19 +30,6 @@ const avatarsSchema = new Schema({
 // make model
 const Avatar = model('avatar', avatarsSchema)
 
-// make elements schema
-const elementsSchema = new Schema({
-	name: String,
-	tribe: String,
-	martialArt: String,
-	subElement: String,
-	notableAvatar: String,
-	image: String,
-})
-
-// make element model
-const Element = model('Element', elementsSchema)
-
 
 ///////////////////////////////////////////////////
 // Export Model
