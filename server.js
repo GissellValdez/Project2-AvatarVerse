@@ -6,8 +6,8 @@ const express = require('express') // import express
 const morgan = require('morgan') //import morgan
 const methodOverride = require('method-override')
 const path = require('path')
-const mongoose = require("./models/connection") // imported from connections' export
 const Avatar = require("./models/avatar")
+const Element = require("./models/element")
 
 
 /////////////////////////////////////////////////
