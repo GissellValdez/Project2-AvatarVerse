@@ -14,7 +14,7 @@ const router = express.Router();
 /////////////////////////////////////////
 
 /// Elements Seed Route ///
-router.get('/elements/seed', (req, res) => {
+router.get('/seed', (req, res) => {
 	const allFourElements = [
 		{
 			name: 'Fire',

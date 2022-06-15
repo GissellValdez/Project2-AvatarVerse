@@ -13,82 +13,32 @@ const router = express.Router(); // helps connect each of our paths to our route
 // Routes
 /////////////////////////////////////////
 
-/// Avatars Seed Route ///
-router.get('/avatars/seed', (req, res) => {
-	// array of last 10 avatars
-	const lastTenAvatars = [
-		{
-			name: 'Korra',
-			tribe: 'Northern Water Tribe',
-			animalCompanion: 'Polarbear Dog - Naga',
-		},
-		{
-			name: 'Aang',
-			tribe: 'Souther Air Temple',
-			animalCompanion: 'Flying Bison - Appa',
-		},
-		{
-			name: 'Roku',
-			tribe: 'Fire Nation',
-			animalCompanion: 'Dragon-Fang',
-		},
-		{
-			name: 'Kyoshi',
-			tribe: 'Earth Kingdom',
-			animalCompanion: 'Unknown',
-		},
-		{
-			name: 'Kuruk',
-			tribe: 'Northern Water Tribe',
-			animalCompanion: 'unknown',
-		},
-		{
-			name: 'Yangchen',
-			tribe: 'Western Air Temple',
-			animalCompanion: 'unknown',
-		},
-		{
-			name: 'Szeto',
-			tribe: 'Fire Nation',
-			animalCompanion: 'unknown',
-		},
-		{
-			name: 'Salai',
-			tribe: 'unknown',
-			animalCompanion: 'unknown',
-		},
-		{
-			name: 'Gun',
-			tribe: 'unknown',
-			animalCompanion: 'unknown',
-		},
-		{
-			name: 'Wan',
-			tribe: 'Fire Nation',
-			animalCompanion: 'Lion Turtle',
-		},
-	]
 
-	// Delete all elements
-	Avatar.deleteMany({}).then((data) => {
-		// Seed All Four Elements
-		Avatar.create(lastTenAvatars).then((data) => {
-			// send created elements as response to confirm creation
-			res.json(data)
-		})
-	})
-})
 
 
 /// AVATARS Index route ///
-router.get('/avatars', async (req, res) => {
+router.get('/', async (req, res) => {
 	const avatars = await Avatar.find({})
 	// find all the avatars
 	res.render('avatars/index.liquid', { avatars })
 })
 
+// CREATE route
+router.post('/', (req, res) => {
+	// create the new avatar
+	Avatar.create(req.body)
+		.then((avatar) => {
+			// redirect user to index page if successfully created item
+			res.redirect('/avatars')
+		})
+		// send error as json
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
+})
 
-// new route
+// NEW route
 router.get('/signup', (req, res) => {
 	// create the new avatar
 	Avatar.create(req.body)
@@ -103,23 +53,8 @@ router.get('/signup', (req, res) => {
 		})
 })
 
-// create route
-router.post('/avatars', (req, res) => {
-	// create the new avatar
-	Avatar.create(req.body)
-		.then((avatar) => {
-			// redirect user to index page if successfully created item
-			res.redirect('/avatars')
-		})
-		// send error as json
-		.catch((error) => {
-			console.log(error)
-			res.json({ error })
-		})
-})
-
 // AVATARS show route
-router.get('/avatars/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 
@@ -135,9 +70,8 @@ router.get('/avatars/:id', (req, res) => {
 		})
 })
 
-
 //update route
-router.put('/signup/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 
@@ -154,8 +88,28 @@ router.put('/signup/:id', (req, res) => {
 		})
 })
 
+////// EDIT ROUTE/////
+
+/*
+router.get("/:id/edit", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // get the fruit from the database
+  Fruit.findById(id)
+    .then((fruit) => {
+      // render edit page and send fruit data
+      res.render("fruits/edit.liquid", { fruit });
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
+*/
+
 //destroy route
-router.delete('/signup/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 	// delete the avatar
@@ -174,4 +128,4 @@ router.delete('/signup/:id', (req, res) => {
 //////////////////////////////////////////
 // Export the Router
 //////////////////////////////////////////
-module.exports = router;
+module.exports = router
