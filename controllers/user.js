@@ -14,9 +14,13 @@ const router = express.Router()
 // Routes
 /////////////////////////////////////////
 
+router.get('/', (req, res) => {
+	res.render('../views/signup/index.liquid')
+})
+
 // The Signup Routes (Get => form, post => submit form)
 router.get('/signup', (req, res) => {
-	res.render('user/signup.liquid')
+	res.render('../views/signup/signup.liquid')
 })
 
 router.post('/signup', async (req, res) => {
@@ -40,7 +44,7 @@ router.post('/signup', async (req, res) => {
 
 // The login Routes (Get => form, post => submit form)
 router.get('/login', (req, res) => {
-	res.render('user/login')
+	res.render('../views/signup/login.liquid')
 })
 
 router.post('/login', async (req, res) => {

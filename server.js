@@ -6,9 +6,6 @@ const express = require('express') // import express
 const morgan = require('morgan') //import morgan
 const methodOverride = require('method-override')
 const path = require('path')
-const Avatar = require("./models/avatar")
-const Element = require('./models/element')
-const User = require('./models/user')
 const AvatarRouter = require("./controllers/avatars")
 const ElementRouter = require("./controllers/elements")
 const UserRouter = require("./controllers/user");
@@ -33,9 +30,9 @@ app.use(express.static('public')) // serve files from public statically
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-app.use("/avatars",AvatarRouter) // send all "/fruits" routes to the fruit router
-app.use("/elements",ElementRouter) // send all "/fruits" routes to the fruit router
-app.use("/login",UserRouter) // send all "/fruits" routes to the fruit router
+app.use("/avatars",AvatarRouter) // send all "/avatar" routes to the avatar router
+app.use("/elements",ElementRouter) // send all "/element" routes to the element router
+app.use("/login",UserRouter) // send all "/user" routes to the user router
 
 
 

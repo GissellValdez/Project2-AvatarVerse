@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 			res.json({ error })
 		})
 })
-
+/*
 // NEW route
 router.get('/signup', (req, res) => {
 	// create the new avatar
@@ -52,7 +52,7 @@ router.get('/signup', (req, res) => {
 			res.json({ error })
 		})
 })
-
+*/
 // AVATARS show route
 router.get('/:id', (req, res) => {
 	// get the id from params
