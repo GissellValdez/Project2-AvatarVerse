@@ -7,9 +7,13 @@ const morgan = require('morgan') //import morgan
 const methodOverride = require('method-override')
 const path = require('path')
 const Avatar = require("./models/avatar")
-const Element = require("./models/element")
+const Element = require('./models/element')
+const User = require('./models/user')
 const AvatarRouter = require("./controllers/avatars")
-const ElementRouter = require("./controllers/avatars")
+const ElementRouter = require("./controllers/elements")
+const UserRouter = require("./controllers/user");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 /////////////////////////////////////////////////
 // Create our Express Application Object Bind Liquid Templating Engine

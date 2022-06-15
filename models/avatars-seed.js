@@ -4,8 +4,19 @@
 const mongoose = require('./connection')
 const Avatar = require('./avatar') // requiring from the avatar model.
 
-/// Avatars Seed Route ///
-router.get('/seed', (req, res) => {
+///////////////////////////////////////
+// Seed Code
+///////////////////////////////////////
+
+// Save the connection in a variable
+const db = mongoose.connection // We need this to connect to mongoose to add the following data. 
+
+// Make sure code is not run until connected.
+db.on('open', () => {
+	/// Avatars Seed Route ///
+
+	// router.get('/seed', (req, res) => {  DELETE THIS WE DON'T NEED IT ANYMORE ZOOM 01:10
+
 	// array of last 10 avatars
 	const lastTenAvatars = [
 		{
@@ -61,7 +72,8 @@ router.get('/seed', (req, res) => {
 	]
 
 	// Delete all elements
-	Avatar.deleteMany({}).then((data) => {
+	Avatar.deleteMany({})
+	.then((data) => {
 		// Seed All Four Elements
 		Avatar.create(lastTenAvatars).then((data) => {
 			// send created elements as response to confirm creation

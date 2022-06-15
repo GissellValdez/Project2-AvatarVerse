@@ -43,15 +43,6 @@ router.get('/seed', (req, res) => {
 			notableAvatar: String,
 			image: String,
 		},
-
-		{
-			name: 'Metal',
-			tribe: 'Tophs Metal Bending Academy',
-			martialArt: String,
-			strongestMove: String,
-			notableAvatar: 'Aang, Korra (Not sure)',
-			image: String,
-		},
 	]
 
 	// Delete all elements
