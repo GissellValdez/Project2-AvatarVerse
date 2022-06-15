@@ -1,35 +1,14 @@
 /////////////////////////////////////////////
 // Import Our Dependencies
 /////////////////////////////////////////////
-require('dotenv').config() // Load ENV Variables
+require('dotenv').config() // In order to connect to Database
 const express = require('express') // import express
 const morgan = require('morgan') //import morgan
 const methodOverride = require('method-override')
-const mongoose = require('mongoose')
 const path = require('path')
+const mongoose =require("./models/connection") // imported from connections' export
 
-/////////////////////////////////////////////
-// Database Connection
-/////////////////////////////////////////////
-// Setup inputs for our connect function
-const DATABASE_URL = process.env.DATABASE_URL
-const CONFIG = {
-	//gets rid of deprecation warning
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-}
-
-// Establish Connection
-mongoose.connect(DATABASE_URL, CONFIG)
-
-// Events for when connection opens/disconnects/errors
-mongoose.connection
-  .on("open", () => console.log("Connected to Mongoose"))
-  .on("close", () => console.log("Disconnected from Mongoose"))
-  .on("error", (error) => console.log(error));
-  
-
-  ////////////////////////////////////////////////
+////////////////////////////////////////////////
 // Our Models
 ////////////////////////////////////////////////
 
@@ -42,32 +21,32 @@ const { Schema, model } = mongoose
 
 // make Avatars Schema
 const avatarsSchema = new Schema({
-   name: String,
-   tribe: String,
-   animalCompanion: String,
-   avatarStateAge: Number,
-   rival: String,
-   signatureMove: String,
-   accomplishments: String, // should have an option of 3 different accomplishments - use an array.
-   goToElement: String,
-   ageOfDeath: Number,
+	name: String,
+	tribe: String,
+	animalCompanion: String,
+	avatarStateAge: Number,
+	rival: String,
+	signatureMove: String,
+	accomplishments: String, // should have an option of 3 different accomplishments - use an array.
+	goToElement: String,
+	ageOfDeath: Number,
 })
- 
+
 // make model
-const Avatar = model("avatar", avatarsSchema)
- 
+const Avatar = model('avatar', avatarsSchema)
+
 // make elements schema
 const elementsSchema = new Schema({
-   name: String,
-   tribe: String,
-   martialArt: String,
-   subElement: String,
-   notableAvatar: String,
-   image: String,
+	name: String,
+	tribe: String,
+	martialArt: String,
+	subElement: String,
+	notableAvatar: String,
+	image: String,
 })
- 
+
 // make element model
-const Element = model("Element", elementsSchema)
+const Element = model('Element', elementsSchema)
 
 /////////////////////////////////////////////////
 // Create our Express Application Object Bind Liquid Templating Engine
@@ -84,16 +63,14 @@ app.use(methodOverride('_method')) // override for put and delete requests from 
 app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodies
 app.use(express.static('public')) // serve files from public statically
 
-
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
 
-
 /// Root Route ///
 
 app.get('/', (req, res) => {
-    res.render('root.liquid')
+	res.render('root.liquid')
 })
 
 /// Avatars Seed Route ///
@@ -162,11 +139,9 @@ app.get('/avatars/seed', (req, res) => {
 	})
 })
 
-
 /// Elements Seed Route ///
 app.get('/elements/seed', (req, res) => {
-
-    	const allFourElements = [
+	const allFourElements = [
 		{
 			name: 'Fire',
 			tribe: 'Fire Nation',
@@ -211,23 +186,21 @@ app.get('/elements/seed', (req, res) => {
 			// send created elements as response to confirm creation
 			res.json(data)
 		})
-	}) 
+	})
 })
 
 /// AVATARS Index route ///
- app.get('/avatars', async (req, res) => {
-		const avatars = await Avatar.find({})
-		// find all the avatars
-		res.render('avatars/index.liquid', { avatars })
- })
-
+app.get('/avatars', async (req, res) => {
+	const avatars = await Avatar.find({})
+	// find all the avatars
+	res.render('avatars/index.liquid', { avatars })
+})
 
 /// ELEMENTS Index Route ///
-app.get("/elements", async (req, res) => {
+app.get('/elements', async (req, res) => {
 	const elements = await Element.find({})
 	res.render('elements/index.liquid', { elements })
-});
-
+})
 
 // new route
 app.get('/signup', (req, res) => {
@@ -260,7 +233,7 @@ app.post('/avatars', (req, res) => {
 })
 
 // AVATARS show route
-app.get('/avatars/:id', (req,res) => {
+app.get('/avatars/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 
@@ -277,7 +250,7 @@ app.get('/avatars/:id', (req,res) => {
 })
 
 // ELEMENTS show route
-app.get('/elements/:id', (req,res) => {
+app.get('/elements/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 
