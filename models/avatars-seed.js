@@ -71,13 +71,23 @@ db.on('open', () => {
 		},
 	]
 
-	// Delete all elements
-	Avatar.deleteMany({})
-	.then((data) => {
-		// Seed All Four Elements
-		Avatar.create(lastTenAvatars).then((data) => {
-			// send created elements as response to confirm creation
-			res.json(data)
-		})
-	})
+	// Delete all avatars
+	  Avatar.deleteMany({})
+    .then((deletedAvatars) => {
+      // add the starter avatars
+      Avatar.create(lastTenAvatars)
+        .then((newAvatars) => {
+          // log the new avatars to confirm their creation
+          console.log(newAvatars);
+          db.close();
+        })
+        .catch((error) => {
+          console.log(error);
+          db.close();
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+      db.close();
+    });
 })
