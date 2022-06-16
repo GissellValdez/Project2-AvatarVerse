@@ -132,7 +132,7 @@ router.put('/my-avatars/:id', (req, res) => {
 })
 
 //destroy route
-router.delete('/:id', (req, res) => {
+router.delete('/my-avatars/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 	// delete the avatar

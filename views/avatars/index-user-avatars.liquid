@@ -43,6 +43,10 @@
             <br>
             <a href="/avatars/my-avatars/{{ avatar._id }}/edit"><button>Edit: {{avatar.name}}</button></a>
             <br>
+            <form action="/avatars/my-avatars/{{ avatar._id }}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete: {{avatar.name}}">
+            </form>
+            <br>
         </div>
         {%endfor%}
     </div>
