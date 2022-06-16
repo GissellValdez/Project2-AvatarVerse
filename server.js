@@ -26,13 +26,22 @@ app.use(morgan('tiny')) //logging
 app.use(methodOverride('_method')) // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodies
 app.use(express.static('public')) // serve files from public statically
+// middleware to setup session
+app.use(
+  session({
+    secret: process.env.SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+    saveUninitialized: true,
+    resave: false,
+  })
+);
 
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
 app.use("/avatars",AvatarRouter) // send all "/avatar" routes to the avatar router
 app.use("/elements",ElementRouter) // send all "/element" routes to the element router
-app.use("/login",UserRouter) // send all "/user" routes to the user router
+app.use("/user",UserRouter) // send all "/user" routes to the user router
 
 
 

@@ -9,12 +9,21 @@ const Avatar = require('../models/avatar')
 /////////////////////////////////////////
 const router = express.Router(); // helps connect each of our paths to our router.
 
+////////////////////////////////////////
+// Router Middleware
+////////////////////////////////////////
+// Authorization Middleware
+router.use((req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/user");
+  }
+});
+
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
-
-
-
 
 /// AVATARS Index route ///
 router.get('/', async (req, res) => {
