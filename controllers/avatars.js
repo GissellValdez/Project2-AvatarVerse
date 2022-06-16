@@ -47,6 +47,7 @@ router.get('/my-avatars/new', (req, res) => {
 
 // CREATE route
 router.post('/', (req, res) => {
+	req.body.username = req.session.username
 	// create the new avatar
 	Avatar.create(req.body)
 		.then((avatar) => {

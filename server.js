@@ -41,7 +41,7 @@ app.use(
 ////////////////////////////////////////////
 app.use("/avatars",AvatarRouter) // send all "/avatar" routes to the avatar router
 app.use("/elements",ElementRouter) // send all "/element" routes to the element router
-app.use("/login",UserRouter) // send all "/user" routes to the user router
+app.use("/user",UserRouter) // send all "/user" routes to the user router
 
 
 
