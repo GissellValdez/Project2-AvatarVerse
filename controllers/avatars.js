@@ -77,6 +77,42 @@ router.get('/:id', (req, res) => {
 		})
 })
 
+// USER AVATARS show route
+router.get('/my-avatars/:id', (req, res) => {
+	// get the id from params
+	const id = req.params.id
+
+	// find the particular element from the database
+	Avatar.findById(id)
+		.then((avatar) => {
+			// render the template with the data from the database
+			res.render('./avatars/show-user-avatars.liquid', { avatar })
+		})
+		.catch((error) => {
+			console.log(error)
+			res.json({ error })
+		})
+})
+
+
+////// EDIT ROUTE/////
+
+router.get("/avatars/my-avatars/:id/edit", (req, res) => {
+  // get the id from params
+  const id = req.params.id;
+  // get the fruit from the database
+  Fruit.findById(id)
+    .then((fruit) => {
+      // render edit page and send fruit data
+      res.render("fruits/edit.liquid", { fruit });
+    })
+    // send error as json
+    .catch((error) => {
+      console.log(error);
+      res.json({ error });
+    });
+});
+
 //update route
 router.put('/:id', (req, res) => {
 	// get the id from params
@@ -94,26 +130,6 @@ router.put('/:id', (req, res) => {
 			res.json({ error })
 		})
 })
-
-////// EDIT ROUTE/////
-
-/*
-router.get("/:id/edit", (req, res) => {
-  // get the id from params
-  const id = req.params.id;
-  // get the fruit from the database
-  Fruit.findById(id)
-    .then((fruit) => {
-      // render edit page and send fruit data
-      res.render("fruits/edit.liquid", { fruit });
-    })
-    // send error as json
-    .catch((error) => {
-      console.log(error);
-      res.json({ error });
-    });
-});
-*/
 
 //destroy route
 router.delete('/:id', (req, res) => {

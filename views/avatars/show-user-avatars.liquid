@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvatarVerse: {{avatar.name}}</title>
+
+    <style type="text/css">
+        body {
+            background-color: red;
+            color: rgb(215, 247, 236);
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .canvas {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            justify-items: center;
+        }
+
+        .dataDiv {
+            background-color: grey;
+            text-align: center;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <h1>{{avatar.name}}</h1>
+        <a href="/avatars/my-avatars"><button>Back to My Avatars</button></a>
+    </div>
+    <br>
+    <br>
+    <div class="canvas">
+        <div id="nameAndBasicInfo" class="dataDiv">
+            <br>
+            <br>
+            <img src="{{avatar.img}}" width="75" height="100">
+        </div>
+
+        <div id="statsInfo" class="dataDiv">
+            <h2>Avatar information:</h2>
+            <ul>
+                <li>Tribe: {{avatar.tribe}}</li>
+                <li>Animal Companion: {{avatar.animalCompanion}}</li>
+                <li>Avatar State Age: {{avatar.avatarStateAge}}</li>
+                <li>Rival: {{avatar.rival}}</li>
+                <li>Signature Move: {{avatar.signatureMove}}</li>
+                <li>Accomplishments: {{avatar.accomplishments}}</li>
+                <li>Go-To Element: {{avatar.goToElement}}</li>
+                <li>Age Of Death: {{avatar.ageOfDeath}}</li>
+                <ul>
+        </div>
+    </div>
+</body>
+
+</html>
