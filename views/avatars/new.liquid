@@ -1,0 +1,45 @@
+{% layout "layout.liquid" %} {% block content %}
+    <h1>Add a new Avatar</h1>
+    <div class="container">
+        <form action="/avatars/" method="POST">
+            <fieldset>
+                <label>
+                    Name: <input type="text" name="name" placeholder="Enter name for your avatar" />
+                </label>
+                <label>
+                    Img: <input type="text" name="img" placeholder="Enter Img Link" />
+                </label>
+                <label>
+                    Tribe: <input type="text" name="tribe" placeholder="Enter your avatar's tribe" />
+                </label>
+                <label>
+                    Animal Companion: <input type="text" name="animalCompanion" placeholder="Enter animal companion" />
+                </label>
+                <label>
+                    Avatar State Age: <input type="number" name="avatarStateAge"
+                placeholder="Enter age when first entered avatar state" />
+                </label>
+                <label>
+                    Rival: <input type="text" name="rival" placeholder="Enter rival's name" />
+                </label>
+                <label>
+                    Signature Move: <input type="text" name="signatureMove" placeholder="Enter signature move" />
+                </label>
+                <label>
+                    Accomplishments: <input type="text" name="accomplishments"
+                placeholder="Enter accomplishments (comma separated)" />
+                </label>
+                <label>
+                    Go To Element: <input type="text" name="goToElement" placeholder="Enter go to element" />
+                </label>
+                <label>
+                    Age Of Death: <input type="number" name="ageOfDeath" placeholder="Enter the age of death" />
+                </label>
+                <label>
+                    Username: <input type="text" name="username" placeholder="Enter your username" />
+                </label>
+            </fieldset>
+            <input type="submit" value="Create new Avatar" />
+        </form>
+    </div>
+{% endblock %}

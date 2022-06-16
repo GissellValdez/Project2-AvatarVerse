@@ -12,6 +12,7 @@ const router = express.Router(); // helps connect each of our paths to our route
 ////////////////////////////////////////
 // Router Middleware
 ////////////////////////////////////////
+
 // Authorization Middleware
 router.use((req, res, next) => {
   if (req.session.loggedIn) {
@@ -32,13 +33,25 @@ router.get('/', async (req, res) => {
 	res.render('../views/avatars/index.liquid', { avatars })
 })
 
+// USER AVATARS index route
+router.get('/my-avatars', async (req, res) => {
+	const avatars = await Avatar.find({ username: req.session.username })
+	// find all the avatars
+	res.render('../views/avatars/index-user-avatars.liquid', { avatars })
+})
+
+// NEW route
+router.get('/my-avatars/new', (req, res) => {
+	res.render('../views/avatars/new.liquid');
+})
+
 // CREATE route
 router.post('/', (req, res) => {
 	// create the new avatar
 	Avatar.create(req.body)
 		.then((avatar) => {
 			// redirect user to index page if successfully created item
-			res.redirect('/avatars')
+			res.redirect('/avatars/my-avatars')
 		})
 		// send error as json
 		.catch((error) => {
@@ -46,22 +59,7 @@ router.post('/', (req, res) => {
 			res.json({ error })
 		})
 })
-/*
-// NEW route
-router.get('/signup', (req, res) => {
-	// create the new avatar
-	Avatar.create(req.body)
-		.then((avatar) => {
-			// redirect user to index page if successfully created item
-			res.redirect('/avatars')
-		})
-		// send error as json
-		.catch((error) => {
-			console.log(error)
-			res.json({ error })
-		})
-})
-*/
+
 // AVATARS show route
 router.get('/:id', (req, res) => {
 	// get the id from params

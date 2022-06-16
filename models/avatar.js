@@ -17,6 +17,7 @@ const { Schema, model } = mongoose
 // make Avatars Schema
 const avatarsSchema = new Schema({
 	name: String,
+	img: String,
 	tribe: String,
 	animalCompanion: String,
 	avatarStateAge: Number,
@@ -25,6 +26,7 @@ const avatarsSchema = new Schema({
 	accomplishments: String, // should have an option of 3 different accomplishments - use an array.
 	goToElement: String,
 	ageOfDeath: Number,
+	username: String,
 })
 
 // make model

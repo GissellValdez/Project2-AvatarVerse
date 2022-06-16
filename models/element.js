@@ -17,6 +17,7 @@ const { Schema, model } = mongoose
 // make elements schema
 const elementsSchema = new Schema({
 	name: String,
+	img: String,
 	tribe: String,
 	martialArt: String,
 	subElement: String,

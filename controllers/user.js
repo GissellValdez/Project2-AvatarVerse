@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
 					req.session.username = username
 					req.session.loggedIn = true
 					// redirect to ballets page if successful
-					res.redirect('/avatars')
+					res.redirect('/avatars/my-avatars')
 				} else {
 					// error if password doesn't match
 					res.json({ error: "password doesn't match" })
