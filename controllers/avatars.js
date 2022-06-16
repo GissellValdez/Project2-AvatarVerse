@@ -97,14 +97,14 @@ router.get('/my-avatars/:id', (req, res) => {
 
 ////// EDIT ROUTE/////
 
-router.get("/avatars/my-avatars/:id/edit", (req, res) => {
+router.get("/my-avatars/:id/edit", (req, res) => {
   // get the id from params
   const id = req.params.id;
   // get the fruit from the database
-  Fruit.findById(id)
-    .then((fruit) => {
+  Avatar.findById(id)
+    .then((avatars) => {
       // render edit page and send fruit data
-      res.render("fruits/edit.liquid", { fruit });
+      res.render('./avatars/edit.liquid', { avatars })
     })
     // send error as json
     .catch((error) => {
@@ -114,7 +114,7 @@ router.get("/avatars/my-avatars/:id/edit", (req, res) => {
 });
 
 //update route
-router.put('/:id', (req, res) => {
+router.put('/my-avatars/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
 
@@ -122,7 +122,7 @@ router.put('/:id', (req, res) => {
 	Avatar.findByIdAndUpdate(id, req.body, { new: true })
 		.then((avatar) => {
 			// redirect to main page after updating
-			res.redirect('/avatars')
+			res.redirect('/')
 		})
 		// send error as json
 		.catch((error) => {

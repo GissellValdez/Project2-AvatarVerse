@@ -1,0 +1,46 @@
+{% layout "layout.liquid" %} {% block content %}
+<h1>Add a new Avatar</h1>
+<h3>After editing you will be redirected to the main page.</h3>
+<div class="container">
+    <form action="/avatars/my-avatars/{{avatars._id}}?_method=PUT" method="POST">
+        <fieldset>
+            <label>
+                Name: <input type="text" name="name" placeholder="Enter name for your avatar" value="{{ avatars.name }}"/>
+            </label><br>
+            <label>
+                Img: <input type="text" name="img" placeholder="Enter Img Link"  value="{{ avatars.img }}"/>
+            </label><br>
+            <label>
+                Tribe: <input type="text" name="tribe" placeholder="Enter your avatar's tribe"  value="{{ avatars.tribe }}"/>
+            </label><br>
+            <label>
+                Animal Companion: <input type="text" name="animalCompanion" placeholder="Enter animal companion"  value="{{ avatars.animalCompanion }}"/>
+            </label><br>
+            <label>
+                Avatar State Age: <input type="number" name="avatarStateAge"
+                    placeholder="Enter age when first entered avatar state"  value="{{ avatars.avatarStateAge }}"/>
+            </label><br>
+            <label>
+                Rival: <input type="text" name="rival" placeholder="Enter rival's name"  value="{{ avatars.rival }}"/>
+            </label><br>
+            <label>
+                Signature Move: <input type="text" name="signatureMove" placeholder="Enter signature move"  value="{{ avatars.signatureMove }}"/>
+            </label><br>
+            <label>
+                Accomplishments: <input type="text" name="accomplishments"
+                    placeholder="Enter accomplishments (comma separated)"  value="{{ avatars.accomplishments }}"/>
+            </label><br>
+            <label>
+                Go To Element: <input type="text" name="goToElement" placeholder="Enter go to element"  value="{{ avatars.goToElement }}"/>
+            </label><br>
+            <label>
+                Age Of Death: <input type="number" name="ageOfDeath" placeholder="Enter the age of death"  value="{{ avatars.ageOfDeath }}"/>
+            </label><br>
+            <label>
+                Username: <input type="text" name="username" placeholder="Enter your username"  value="{{ avatars.username }}"/>
+            </label><br>
+        </fieldset>
+        <input type="submit" value="Edit Avatar {{ avatars.name}}" />
+    </form>
+</div>
+{% endblock %}
