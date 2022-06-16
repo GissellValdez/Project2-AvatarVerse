@@ -4,7 +4,7 @@
 const mongoose = require("./connection");
 
 ////////////////////////////////////////////////
-// Define Model
+// Define Model   THIS USER MODEL IS STRICTLY FOR AUTHENTICATION FOR USER SIGNUP AND LOGIN
 ////////////////////////////////////////////////
 // pull schema and model from mongoose
 const { Schema, model } = mongoose;

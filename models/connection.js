@@ -5,10 +5,10 @@ require('dotenv').config() // In order to connect to Database
 const mongoose = require('mongoose')
 
 /////////////////////////////////////////////
-// Database Connection
+// Database Connection CONNECTING APPLICATION TO DATABASE MONGODB
 /////////////////////////////////////////////
 // Setup inputs for our connect function
-const DATABASE_URL = process.env.DATABASE_URL
+const MONGODB_URI = process.env.MONGODB_URI
 const CONFIG = {
 	//gets rid of deprecation warning
 	useNewUrlParser: true,
@@ -16,7 +16,7 @@ const CONFIG = {
 }
 
 // Establish Connection
-mongoose.connect(DATABASE_URL, CONFIG)
+mongoose.connect(MONGODB_URI, CONFIG)
 
 // Events for when connection opens/disconnects/errors
 mongoose.connection

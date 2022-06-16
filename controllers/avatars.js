@@ -5,7 +5,7 @@ const express = require('express')
 const Avatar = require('../models/avatar')
 
 /////////////////////////////////////////
-// Create Route
+// Create Router (This used to be app.path)
 /////////////////////////////////////////
 const router = express.Router(); // helps connect each of our paths to our router.
 
@@ -13,7 +13,7 @@ const router = express.Router(); // helps connect each of our paths to our route
 // Router Middleware
 ////////////////////////////////////////
 
-// Authorization Middleware
+// AUTHORIZATION Middleware
 router.use((req, res, next) => {
   if (req.session.loggedIn) {
     next();
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 	res.render('../views/avatars/index.liquid', { avatars })
 })
 
-// USER AVATARS index route
+// USER - CREATE YOUR OWN AVATAR index route
 router.get('/my-avatars', async (req, res) => {
 	const avatars = await Avatar.find({ username: req.session.username })
 	// find all the avatars
@@ -77,7 +77,7 @@ router.get('/:id', (req, res) => {
 		})
 })
 
-// USER AVATARS show route
+// USER CREATE YOUR OWN AVATAR show route
 router.get('/my-avatars/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id

@@ -41,7 +41,7 @@ app.use(
 ////////////////////////////////////////////
 app.use("/avatars",AvatarRouter) // send all "/avatar" routes to the avatar router
 app.use("/elements",ElementRouter) // send all "/element" routes to the element router
-app.use("/user",UserRouter) // send all "/user" routes to the user router
+app.use("/login",UserRouter) // send all "/user" routes to the user router
 
 
 
@@ -56,4 +56,5 @@ app.get('/', (req, res) => {
 // Server Listener
 //////////////////////////////////////////////
 const PORT = process.env.PORT
-app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
+//app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
+app.listen((process.env.PORT || 3000), () => console.log(`Now Listening on port ${PORT}`))
