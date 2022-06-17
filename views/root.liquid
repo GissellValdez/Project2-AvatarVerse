@@ -15,16 +15,29 @@
             font-size: 18;
         }
 
+        .bannerDiv {
+            display: grid;
+            grid-template-columns: repeat(1, auto);
+            justify-items: center;
+        }
+
         .container {
             display: grid;
             grid-template-columns: repeat(4, auto);
+            justify-items: center;
+        }
+
+        .gifContainer {
+            display: grid;
+            grid-template-columns: repeat(1, auto);
             justify-items: center;
         }
     </style>
 </head>
 
 <body>
-    <div id="bannerDiv">
+    <div class="bannerDiv">
+        <img src="https://i.ibb.co/dWwnQzf/avatarverse.jpg" alt="avatarverse" border="0"  width="600" height="175">
         <h1>Welcome to the AvatarVerse!!</h1>
         <h2>A hub for all things Avatar: The Last Airbender and Legend of Korra!</h2>
     </div>
@@ -37,11 +50,27 @@
         <a href="/elements/"><button>Elements</button></a>
         <a href="/user/"><button>Sign up and Create Your Own Avatar</button></a>
 
+        <img src="https://www.comingsoon.net/assets/uploads/2021/02/avatar-last-airbender-korra-e1614266353627.jpg" width="250"
+                height="200">
+        
+        <img src="https://www.cheatsheet.com/wp-content/uploads/2021/08/Avatar-Aang.jpg" width="250"
+            height="200">
 
-        <!-- 
-            INSERT GIF OF "avatar airbender episode intro gif"
-            -->
+        <img src="https://wallegend.net/gif/604.gif" width="250" height="200">
+
+
+
+        <img src="https://cdn.inprnt.com/thumbs/84/cc/84cc12a45ff079b29a3542c25e98f8f7.jpg?response-cache-control=max-age=2628000" width="250" height="200">
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="gifContainer">
+            <img src="https://c.tenor.com/7dME9DJjcasAAAAC/avatar-the-last-airbender-avatar.gif" width="900" height="450">
+    </div>
+
 </body>
 
 </html>

@@ -27,7 +27,7 @@ const avatarsSchema = new Schema({
 	goToElement: String,
 	ageOfDeath: Number,
 	username: String,
-	firstElement: [{ type: Schema.Types.ObjectId, ref: 'Element' }], //THIS IS WHAT IM REFERENCING
+	// firstElement: [{ type: Schema.Types.ObjectId, ref: 'Element' }], //THIS IS WHAT IM REFERENCING
 })
 
 // make model

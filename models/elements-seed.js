@@ -21,7 +21,7 @@ db.on('open', () => {
 			martialArt: 'ShaoLin/ Kung-Fu',
 			strongestMove: '',
 			notableAvatar: 'Roku',
-			image: '',
+			image: 'https://cdnb.artstation.com/p/assets/images/images/030/066/201/large/clark-coots-fire.jpg?1599502506',
 		},
 
 		{
@@ -30,7 +30,7 @@ db.on('open', () => {
 			martialArt: '',
 			strongestMove: '',
 			notableAvatar: '',
-			image: '',
+			image: 'https://cdna.artstation.com/p/assets/images/images/030/066/208/large/clark-coots-air.jpg?1599502514',
 		},
 
 		{
@@ -39,7 +39,7 @@ db.on('open', () => {
 			martialArt: 'Tai-chi',
 			strongestMove: '',
 			notableAvatar: 'Korra',
-			image: '',
+			image:'https://cdnb.artstation.com/p/assets/images/images/030/066/205/large/clark-coots-water.jpg?1599502510',
 		},
 
 		{
@@ -48,13 +48,13 @@ db.on('open', () => {
 			martialArt: '',
 			strongestMove: '',
 			notableAvatar: '',
-			image: '',
+			image: 'https://cdnb.artstation.com/p/assets/images/images/030/066/195/large/clark-coots-earth.jpg?1599502502',
 		},
 	]
 
 	// Delete all elements
 	Element.deleteMany({})
-		.then((deletedAvatars) => {
+		.then((deletedElements) => {
 			// add the starter elements
 			Element.create(allFiveElements)
 				.then((newElements) => {

@@ -13,7 +13,7 @@ const router = express.Router(); // helps connect each of our paths to our route
 // Router Middleware
 ////////////////////////////////////////
 
-// AUTHORIZATION Middleware
+// AUTHORIZATION Middleware   // 
 router.use((req, res, next) => {
   if (req.session.loggedIn) {
     next();
@@ -26,26 +26,26 @@ router.use((req, res, next) => {
 // Routes
 /////////////////////////////////////////
 
-/// AVATARS Index route ///
+/// AVATARS Index route ///   Starting Page/home page for Avatars
 router.get('/', async (req, res) => {
 	const avatars = await Avatar.find({})
 	// find all the avatars
 	res.render('../views/avatars/index.liquid', { avatars })
 })
 
-// USER - CREATE YOUR OWN AVATAR index route
+// USER - CREATE YOUR OWN AVATAR index route // this shows the logged in user's created avatar
 router.get('/my-avatars', async (req, res) => {
 	const avatars = await Avatar.find({ username: req.session.username })
 	// find all the avatars
 	res.render('../views/avatars/index-user-avatars.liquid', { avatars })
 })
 
-// NEW route
+// NEW route  TAKES YOU TO THE PAGE WHERE YOU CREATE NEW AVATAR
 router.get('/my-avatars/new', (req, res) => {
 	res.render('../views/avatars/new.liquid');
 })
 
-// CREATE route
+// CREATE route // THIS CREATES -THE ACTION- OF POSTING THE CREATED AVATAR TO THE DATABASE WHICH IS THEN SHOWN TO THE SHOW PAGE
 router.post('/', (req, res) => {
 	req.body.username = req.session.username
 	// create the new avatar
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 		})
 })
 
-// AVATARS show route
+// AVATARS show route for last 10 avatars
 router.get('/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id
@@ -78,7 +78,7 @@ router.get('/:id', (req, res) => {
 		})
 })
 
-// USER CREATE YOUR OWN AVATAR show route
+// SHOW IS THE ROUTE FOR THE AVATARS THE USER CREATED - WHERE THE LINK TAKES YOU
 router.get('/my-avatars/:id', (req, res) => {
 	// get the id from params
 	const id = req.params.id

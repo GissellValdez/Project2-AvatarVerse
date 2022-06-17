@@ -27,10 +27,11 @@
             justify-items: center;
         }
 
-        .dataDiv {
+        .dataDiv .imgDiv {
             background-color: grey;
             text-align: center;
-            width: 200px;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
@@ -43,10 +44,10 @@
     <br>
     <br>
     <div class="canvas">
-        <div id="nameAndBasicInfo" class="dataDiv">
             <br>
             <br>
-            <img src="{{avatar.img}}" width="75" height="100">
+        <div id="nameAndBasicInfo" class="imgDiv">
+            <img src="{{avatar.img}}" width="225" height="200">
         </div>
 
         <div id="statsInfo" class="dataDiv">
