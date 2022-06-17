@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
 	User.create(req.body)
 		.then((user) => {
 			// redirect to login page
-			res.redirect('/')
+			res.redirect('/user')
 		})
 		.catch((error) => {
 			// send error as json

@@ -56,6 +56,7 @@ db.on('open', () => {
 			animalCompanion: 'unknown',
 		},
 		{
+			name: 'Szeto',
 			tribe: 'Fire Nation',
 			img: 'https://static.wikia.nocookie.net/avatar/images/9/92/Szeto.png',
 			animalCompanion: 'unknown',
