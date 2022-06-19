@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+{% layout "layout.liquid" %} {% block content %}
 
 <head>
     <meta charset="UTF-8">
@@ -57,13 +56,10 @@
                 <li>Animal Companion: {{avatar.animalCompanion}}</li>
                 <li>Avatar State Age: {{avatar.avatarStateAge}}</li>
                 <li>Rival: {{avatar.rival}}</li>
-                <li>Signature Move: {{avatar.signatureMove}}</li>
-                <li>Accomplishments: {{avatar.accomplishments}}</li>
                 <li>Go-To Element: {{avatar.goToElement}}</li>
                 <li>Age Of Death: {{avatar.ageOfDeath}}</li>
                 <ul>
         </div>
     </div>
 </body>
-
-</html>
+{% endblock %}

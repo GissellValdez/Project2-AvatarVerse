@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
 		req.body.password,
 		await bcrypt.genSalt(10)
 	)
-	// create the new user
+	// create the new user  LEAST FAVORITE PART - FIXING REDIRECT FOR SIGN UP FROM ROOT PAGE TO USER PAGE.
 	User.create(req.body)
 		.then((user) => {
 			// redirect to login page

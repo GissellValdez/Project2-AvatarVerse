@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+{% layout "layout.liquid" %} {% block content %}
 
 <head>
     <meta charset="UTF-8">
@@ -27,10 +26,11 @@
             justify-items: center;
         }
 
-        .dataDiv {
+        .dataDiv .imgDiv {
             background-color: grey;
             text-align: center;
-            width: 200px;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
@@ -38,15 +38,15 @@
 <body>
     <div id="banner">
         <h1>{{element.name}}</h1>
-        <a href="/elements">Back to Elements</a>
+        <a href="/elements"><button>Back to Elements</button></a>
     </div>
     <br>
     <br>
+            <br>
+            <br>
     <div class="canvas">
-        <div id="nameAndBasicInfo" class="dataDiv">
-            <br>
-            <br>
-            <img src="{{element.img}}" width="75" height="100">
+        <div id="nameAndBasicInfo" class="imgDiv">
+            <img src="{{element.image}}" width="200" height="200">
         </div>
 
         <div id="statsInfo" class="dataDiv">
@@ -63,4 +63,4 @@
     </div>
 </body>
 
-</html>
+{% endblock %}

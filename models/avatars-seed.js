@@ -24,12 +24,18 @@ db.on('open', () => {
 			tribe: 'Northern Water Tribe',
 			img: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/avatar-the-last-airbender/1/17/Korra_img.jpg',
 			animalCompanion: 'Polarbear Dog - Naga',
+			avatarStateAge: 16,
+			rival: 'Amon',
+			goToElement: 'fire',
+			ageOfDeath: 120,
 		},
 		{
 			name: 'Aang',
 			tribe: 'Souther Air Temple',
 			img: 'https://static.wikia.nocookie.net/avatar/images/a/ae/Aang_at_Jasmine_Dragon.png',
 			animalCompanion: 'Flying Bison - Appa',
+			rival: 'Ozai',
+			goToElement:'air',
 		},
 		{
 			name: 'Roku',
@@ -56,7 +62,6 @@ db.on('open', () => {
 			animalCompanion: 'unknown',
 		},
 		{
-			name: 'Szeto',
 			tribe: 'Fire Nation',
 			img: 'https://static.wikia.nocookie.net/avatar/images/9/92/Szeto.png',
 			animalCompanion: 'unknown',

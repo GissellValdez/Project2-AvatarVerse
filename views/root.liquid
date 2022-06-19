@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
+{% layout "layout.liquid" %} {% block content %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the AvatarVerse!</title>
 
-    <style type="text/css">
-        body {
-            background-color: red;
-            color: rgb(215, 247, 236);
-            text-align: left;
-            font-size: 18;
-        }
-
-        .bannerDiv {
-            display: grid;
-            grid-template-columns: repeat(1, auto);
-            justify-items: center;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            justify-items: center;
-        }
-
-        .gifContainer {
-            display: grid;
-            grid-template-columns: repeat(1, auto);
-            justify-items: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -53,7 +25,7 @@
         <img src="https://www.comingsoon.net/assets/uploads/2021/02/avatar-last-airbender-korra-e1614266353627.jpg" width="250"
                 height="200">
         
-        <img src="https://www.cheatsheet.com/wp-content/uploads/2021/08/Avatar-Aang.jpg" width="250"
+        <img src="https://external-preview.redd.it/B8z0MkJ0-9KsDSZu3CB6NstaO5ZB06PzxBndRaMN7NY.png?auto=webp&s=5a814f97f3145fd83fff8b9622f1f2764cf9eb55" width="250"
             height="200">
 
         <img src="https://wallegend.net/gif/604.gif" width="250" height="200">
@@ -66,11 +38,11 @@
     <br>
     <br>
     <br>
-
+<!-- GIF of Avatar Roku displaying all four elements at the bottom-->
     <div class="gifContainer">
             <img src="https://c.tenor.com/7dME9DJjcasAAAAC/avatar-the-last-airbender-avatar.gif" width="900" height="450">
     </div>
 
 </body>
 
-</html>
+{% endblock %}

@@ -40,12 +40,12 @@ router.get('/my-avatars', async (req, res) => {
 	res.render('../views/avatars/index-user-avatars.liquid', { avatars })
 })
 
-// NEW route  TAKES YOU TO THE PAGE WHERE YOU CREATE NEW AVATAR
+// NEW route  MY FAVORITE PART -TAKES YOU TO THE PAGE WHERE YOU CREATE NEW AVATAR
 router.get('/my-avatars/new', (req, res) => {
 	res.render('../views/avatars/new.liquid');
 })
 
-// CREATE route // THIS CREATES -THE ACTION- OF POSTING THE CREATED AVATAR TO THE DATABASE WHICH IS THEN SHOWN TO THE SHOW PAGE
+// CREATE route //  MY FAVORITE PART - THIS CREATES -THE ACTION- OF POSTING THE CREATED AVATAR TO THE DATABASE WHICH IS THEN SHOWN TO THE SHOW PAGE
 router.post('/', (req, res) => {
 	req.body.username = req.session.username
 	// create the new avatar
