@@ -51,10 +51,22 @@ app.get('/avatarverse', (req, res) => {
 	res.render('root.liquid')
 })
 
+app.get('/', function (req, res) {
+	res.redirect('/avatarverse')
+})
+
 
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
-const port = 3000
-//app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
-app.listen((process.env.PORT || port), () => console.log(`Now Listening on port ${port}`))
+// const port = 3000
+// //app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
+// app.listen((process.env.PORT || port), () => console.log(`Now Listening on port ${port}`))
+
+app.listen(process.env.PORT || 3000, function () {
+	console.log(
+		'Express server listening on port %d in %s mode',
+		this.address().port,
+		app.settings.env
+	)
+})
