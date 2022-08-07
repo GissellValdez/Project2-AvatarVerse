@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 // Database Connection CONNECTING APPLICATION TO DATABASE MONGODB
 /////////////////////////////////////////////
 // Setup inputs for our connect function
-const DATABASE_URL = process.env.AVATARVERSE_MONGODB_URI
+const DB_URL = process.env.AVATARVERSE_MONGODB_URI
 const CONFIG = {
 	//gets rid of deprecation warning
 	useNewUrlParser: true,
@@ -16,7 +16,7 @@ const CONFIG = {
 }
 
 // Establish Connection
-mongoose.connect(DATABASE_URL, CONFIG)
+mongoose.connect(DB_URL, CONFIG)
 
 // Events for when connection opens/disconnects/errors
 mongoose.connection
