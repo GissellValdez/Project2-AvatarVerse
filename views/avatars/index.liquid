@@ -26,8 +26,8 @@
 <body>
     <div id="bannerDiv">
         <h1>Avatars</h1>
-        <a href="/"><button>Back to main page</button></a><br>
-        <a href="/user/logout"><button>Logout</button></a>
+        <a href="/avatarverse"><button>Back to main page</button></a><br>
+        <a href="/avatarverse/user/logout"><button>Logout</button></a>
     </div>
 
     <br>
@@ -36,7 +36,7 @@
         {%for avatar in avatars%}
         <div class="avatarImg">
             <h3>{{avatar.name}}</h3>
-            <a href="/avatars/{{ avatar._id }}">
+            <a href="/avatarverse/avatars/{{ avatar._id }}">
                 <img src="{{avatar.img}}" width="225" height="200">
             </a>
             <br>
