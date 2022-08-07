@@ -28,13 +28,13 @@ app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodi
 app.use(express.static('public')) // serve files from public statically
 // middleware to setup session
 app.use(
-  session({
-    secret: process.env.SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
-    saveUninitialized: true,
-    resave: false,
-  })
-);
+	session({
+		secret: process.env.SECRET,
+		store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+		saveUninitialized: true,
+		resave: false,
+	})
+)
 
 ////////////////////////////////////////////
 // Routes
