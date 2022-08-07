@@ -39,9 +39,9 @@ app.use(
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-app.use('/avatarverse/avatars', AvatarRouter) // send all "/avatar" routes to the avatar router
-app.use('/avatarverse/elements', ElementRouter) // send all "/element" routes to the element router
-app.use('/avatarverse/user', UserRouter) // send all "/user" routes to the user router
+app.use('/avatars', AvatarRouter) // send all "/avatar" routes to the avatar router
+app.use('/elements', ElementRouter) // send all "/element" routes to the element router
+app.use('/user', UserRouter) // send all "/user" routes to the user router
 
 
 
