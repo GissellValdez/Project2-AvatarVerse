@@ -27,8 +27,8 @@
         <h1>Elements</h1>
     </div>
     <div class="button">
-        <a href="/avatarverse"><button>Back to main page</button></a><br>
-        <a href="/avatarverse/user/logout"><button>Logout</button></a>
+        <a href=""><button>Back to main page</button></a><br>
+        <a href="/user/logout"><button>Logout</button></a>
     </div>
 
     <br>
@@ -37,7 +37,7 @@
         {%for element in elements%}
         <div class="elementImg">
             <h3>{{element.name}}</h3>
-            <a href="/avatarverse/elements/{{ element._id }}">
+            <a href="/elements/{{ element._id }}">
                 <img src="{{element.image}}" width="200" height="200">
             </a>
             <br>

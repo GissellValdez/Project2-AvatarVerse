@@ -47,12 +47,8 @@ app.use('/avatarverse/user', UserRouter) // send all "/user" routes to the user 
 
 /// Root Route ///
 
-app.get('/avatarverse', (req, res) => {
+app.get('/', (req, res) => {
 	res.render('root.liquid')
-})
-
-app.get('/', function (req, res) {
-	res.redirect('/avatarverse')
 })
 
 

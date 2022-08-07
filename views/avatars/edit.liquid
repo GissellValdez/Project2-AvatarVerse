@@ -2,7 +2,7 @@
 <h1>Add a new Avatar</h1>
 <h3>After editing you will be redirected to the main page.</h3>
 <div class="container">
-    <form action="/avatarverse/avatars/my-avatars/{{avatars._id}}?_method=PUT" method="POST">
+    <form action="/avatars/my-avatars/{{avatars._id}}?_method=PUT" method="POST">
         <fieldset>
             <label>
                 Name: <input type="text" name="name" placeholder="Enter name for your avatar" value="{{ avatars.name }}"/>
