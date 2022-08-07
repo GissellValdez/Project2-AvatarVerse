@@ -13,7 +13,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 /////////////////////////////////////////////////
-// Create our Express Application Object Bind Liquid Templating Engine
+// Create our Express Application Object Bind Liquid Template Engine
 /////////////////////////////////////////////////
 const app = require('liquid-express-views')(express(), {
 	root: [path.resolve(__dirname, 'views/')],
