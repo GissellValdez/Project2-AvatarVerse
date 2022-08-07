@@ -47,7 +47,7 @@ app.use("/user",UserRouter) // send all "/user" routes to the user router
 
 /// Root Route ///
 
-app.get('/', (req, res) => {
+app.get('/avatarverse', (req, res) => {
 	res.render('root.liquid')
 })
 
@@ -55,6 +55,6 @@ app.get('/', (req, res) => {
 //////////////////////////////////////////////
 // Server Listener
 //////////////////////////////////////////////
-const PORT = process.env.PORT
+const port = 3000
 //app.listen(PORT, () => console.log(`Now Listening on port ${PORT}`))
-app.listen((process.env.PORT || 3000), () => console.log(`Now Listening on port ${PORT}`))
+app.listen((process.env.PORT || port), () => console.log(`Now Listening on port ${port}`))
